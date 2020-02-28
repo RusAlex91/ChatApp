@@ -3,6 +3,8 @@ const app = express()
 const server = require("http").Server(app)
 //create a port whith socket io
 const io = require("socket.io")(server)
+const port = process.env.PORT || 3000
+
 
 app.set("views", "./views")
 app.set("view engine", "ejs")
@@ -19,7 +21,7 @@ app.get("/:room", (res, req) => {
   res.render("room", {roomName: req.params.room})
 })
 
-server.listen(3000)
+server.listen(port)
 
 const users = {}
 //this will run every time user connect cite
